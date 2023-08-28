@@ -1,0 +1,49 @@
+game <- function(){
+  print("Welcome to Pao Ying Chub Game!")
+  print("Type 'exit' to exit this game")
+  print("What's your name: ")
+  print("-----------------------------")
+  user_name <- readLines("stdin",1)
+  print(paste("Let's play Pao Ying Chub !", user_name))
+  count <- 0
+  user_score <- 0
+  com_score <- 0
+  options <- c("hammer", "paper","scissors")
+  
+  while (TRUE) {
+    print(options)
+    print("Choose one!")
+    user_select <- readLines("stdin",1)
+    com_select <- sample(options, 1)
+    
+    if (user_select == "exit") {
+      if (user_score > com_score) {
+        print(paste("You won Congrats!🎉",user_name))
+      } else if(user_score < com_score) {
+        print(paste("You lost!😭, Try again!",user_name))
+      } else {
+        print(paste("Tied! Rematch again ?😏", user_name))
+      }
+      print(paste(user_name,"Total:",count,"Round","Score:", user_score))
+      print(paste("See ya", user_name," 👻"))
+      break
+    } else if (user_select == com_select) {
+      print("Tie!")
+      count <- count + 1
+    } else if ((user_select == "rock" & com_select == "scissors") |
+               (user_select == "paper" & com_select == "rock") |
+               (user_select == "scissors" & com_select == "paper")) {
+      print("You won!")
+      count <- count + 1
+      user_score <- user_score + 1
+      print("Your")
+    } else if ((user_select == "rock" & com_select == "paper" |
+                user_select == "paper" & com_select == "scissors" |
+                user_select == "scissors" & com_select == "rock")) {
+      print("You lose!")
+      count <- count +1
+      com_score <- com_score +1
+    }
+  }
+}
+game()
