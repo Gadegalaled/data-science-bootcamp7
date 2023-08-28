@@ -1,0 +1,24 @@
+class ATM:
+    def __init__(self, name, bank, balance):
+        self.name = name
+        self.bank = bank
+        self.balance = balance
+
+    def deposit(self,amt):
+        self.balance += amt
+        print(f"You have deposited {amt:,} baht. You now have {self.balance:,} baht left.")
+
+    def withdraw(self,amt):
+        self.balance -= amt
+        print(f"You have withdrawn {amt:,} baht. You now have {self.balance:,} baht left.")
+
+    def check(self):
+        print(f"Your current balance is: {self.balance:,} baht.")
+
+    def transfer(self,name,amt):
+        self.balance -= amt
+        print(f"You have transferred {amt:,} baht to K.{name}.")
+
+    def end(self):
+        print(f"Thank you for using our service. Have a good day {self.name}!")
+
